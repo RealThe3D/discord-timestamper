@@ -26,5 +26,10 @@
   "engines": {
     "node": ">=18"
   },
-  "bin": "dist/index.js"
+  "bin": {
+    "discord-timestamper": "dist/index.js"
+  },
+  "repository": {
+    "url": "git+https://github.com/3DNinja54/discord-timestamper.git"
+  }
 }
