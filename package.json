@@ -1,0 +1,30 @@
+{
+  "name": "discord-timestamper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsc -b && node dist/index.js"
+  },
+  "keywords": [
+    "unix",
+    "unix-timestamp",
+    "discord",
+    "discord-timestamp"
+  ],
+  "author": "The3D",
+  "license": "MIT",
+  "description": "A NPX script for easily converting a set time to discord timestamps.",
+  "dependencies": {
+    "@inquirer/prompts": "^5.3.2",
+    "chalk": "^5.3.0",
+    "date-fns": "^3.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": "dist/index.js"
+}
