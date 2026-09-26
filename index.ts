@@ -2,7 +2,7 @@
 
 import { input, select } from "@inquirer/prompts";
 import chalk from "chalk";
-import { getUnixTime, getDaysInMonth } from "date-fns";
+import { getDaysInMonth, getUnixTime } from "date-fns";
 
 declare const process: {
   stdout: {
@@ -68,7 +68,7 @@ const month = await input({
     return value;
   },
   validate: (value) => {
-    if (isNaN(Number(value)) || value == "") {
+    if (Number.isNaN(Number(value)) || value === "") {
       return theme.error("You must provide a number.");
     }
 
@@ -85,7 +85,7 @@ const daysInMonth = getDaysInMonth(month);
 const day = await input({
   message: theme.accent("Enter the day:"),
   validate: (value) => {
-    if (isNaN(Number(value)) || value == "") {
+    if (Number.isNaN(Number(value)) || value === "") {
       return theme.error("You must provide a number.");
     }
 
@@ -115,7 +115,7 @@ const hour = await input({
     return value;
   },
   validate: (value) => {
-    if (isNaN(Number(value)) || value == "") {
+    if (Number.isNaN(Number(value)) || value === "") {
       return theme.error("You must provide a number.");
     }
 
@@ -130,22 +130,7 @@ const hour = await input({
 const minute = await input({
   message: theme.accent("Enter the minute:"),
   validate: (value) => {
-    if (isNaN(Number(value)) || value == "") {
-      return theme.error("You must provide a number.");
-    }
-
-    if (Number(value) < 0 || Number(value) > 60) {
-      return theme.error("The value must be between 0 and 60.");
-    }
-
-    return true;
-  },
-});
-
-const second = await input({
-  message: theme.accent("Enter the second:"),
-  validate: (value) => {
-    if (isNaN(Number(value)) || value == "") {
+    if (Number.isNaN(Number(value)) || value === "") {
       return theme.error("You must provide a number.");
     }
 
@@ -162,7 +147,6 @@ const dayToNumber = Number(day);
 const yearToNumber = Number(year);
 const hourToNumber = Number(hour);
 const minutesToNumber = Number(minute);
-const secondToNumber = Number(second);
 
 const completeDate = new Date(
   yearToNumber,
@@ -170,7 +154,6 @@ const completeDate = new Date(
   dayToNumber,
   hourToNumber,
   minutesToNumber,
-  secondToNumber,
 );
 
 type timestampType = "default" | "relative";
